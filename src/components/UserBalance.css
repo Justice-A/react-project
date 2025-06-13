@@ -1,0 +1,48 @@
+.custom-card {
+  display: flex;
+  width: 1000px;
+  background-color: rgb(89, 1, 64);
+  justify-content: space-between;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin: 40px auto; /* centers it horizontally */
+  font-family: Arial, sans-serif;
+}
+.total-balance {
+  display: flex;
+  gap: 10px;
+}
+/* Default style */
+.copy-icon {
+  color: white;
+  transition: transform 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+/* On hover: change color */
+.copy-icon:hover {
+  color: #777;
+}
+
+/* On click: animate briefly */
+.copy-icon:active {
+  transform: scale(0.85);
+  color: gray;
+  animation: pulse 0.3s ease;
+}
+
+/* Optional: smoother pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+    color: #aaa;
+  }
+  100% {
+    transform: scale(1);
+  }
+}

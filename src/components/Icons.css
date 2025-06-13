@@ -1,0 +1,24 @@
+.icons {
+  display: flex;
+  gap: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-circle {
+  background-color: rgb(89, 1, 64);
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.icon-circle:hover {
+  background-color: rgb(120, 0, 80);
+}
