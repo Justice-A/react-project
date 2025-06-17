@@ -21,18 +21,24 @@ const QuickLinks = () => {
             Transfer
           </div>
         </Link>
-        <div className="card-item">
-          <WalletOutlined />
-          Bills
-        </div>
-        <div className="card-item">
-          <BarChartOutlined />
-          Topup
-        </div>
-        <div className="card-item">
-          <LineChartOutlined />
-          Invest
-        </div>
+        <Link to="/bill">
+          <div className="card-item">
+            <WalletOutlined />
+            Bills
+          </div>
+        </Link>
+        <Link to="/top-up">
+          <div className="card-item">
+            <BarChartOutlined />
+            Topup
+          </div>
+        </Link>
+        <Link to="/invest">
+          <div className="card-item">
+            <LineChartOutlined />
+            Invest
+          </div>
+        </Link>
         <div className="card-item">
           <GlobalOutlined />
           Betting

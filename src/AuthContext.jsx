@@ -1,15 +1,30 @@
-/*import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext({ children });
+const AuthContext = createContext();
 
-export const AuthContextProvider = () => {
-  //include all the data you need to go global. E.g:
-  const data = {
-    firstname,
-    lastname,
-    password,
+export const AuthContextProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null); // For user data
+
+  const login = (userData) => {
+    setIsAuthenticated(true);
+    setUser(userData);
   };
 
-  return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
+  const logout = () => {
+    setIsAuthenticated(false);
+    setUser(null);
+    // Add any other cleanup here (token removal, etc.)
+  };
+
+  const value = {
+    isAuthenticated,
+    user,
+    login,
+    logout,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-export const useAuthContext = () => useContext(AuthContext)*/
+
+export const useAuthContext = () => useContext(AuthContext);

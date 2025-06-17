@@ -1,9 +1,9 @@
 import React from "react";
-import "./TransferNavbar.css";
+import "./TopUpNavbar.css";
 import { LeftOutlined } from "@ant-design/icons";
 import { HomeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-const TransferNavbar = () => {
+const TopUpNavbar = () => {
   return (
     <div>
       <nav className="navbar">
@@ -13,7 +13,7 @@ const TransferNavbar = () => {
               <LeftOutlined />
             </div>
           </Link>
-          <div>Transfer</div>
+          <div>TopUp</div>
           <Link to="/home">
             <div>
               <HomeOutlined />
@@ -24,5 +24,4 @@ const TransferNavbar = () => {
     </div>
   );
 };
-
-export default TransferNavbar;
+export default TopUpNavbar;

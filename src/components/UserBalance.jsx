@@ -4,7 +4,8 @@ import Navbar from "../components/Navbar";
 import "../components/UserBalance.css";
 import { EyeOutlined } from "@ant-design/icons";
 import { CopyOutlined } from "@ant-design/icons";
-
+import { RightOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 const UserBalance = () => {
   const textToCopy = "7331437201";
   const handleCopy = () => {
@@ -41,8 +42,11 @@ const UserBalance = () => {
             <CopyOutlined onClick={handleCopy} className="copy-icon" />
             7331437201
           </p>
-          <p></p>
-          <p>Transaction History </p>
+          <Link to="/history">
+            <p>
+              Transaction History <RightOutlined />
+            </p>
+          </Link>
         </div>
       </div>
     </div>
