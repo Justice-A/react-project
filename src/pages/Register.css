@@ -1,0 +1,70 @@
+/* Login.css */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  padding: 2rem;
+}
+
+.login-container h2 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
+  max-width: 400px; /* Optimal form width */
+}
+
+.input-field div {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: #666;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.input-field button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-field button:hover {
+  background-color: #555;
+}
+.create-account p {
+  margin-top: 1.5rem;
+  color: #666;
+}
+
+.create-account a {
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.create-account a:hover {
+  color: #333;
+}

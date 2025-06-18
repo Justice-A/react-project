@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../AuthContext";
 import "./Login.css";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuthContext();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add actual authentication logic here
-    // For now, we'll simulate a successful login
-    login({
-      email,
-      // Add other user data you want to store
-    });
-    navigate("/");
+
+    const success = await login(email, password);
+
+    if (success) {
+      navigate("/home");
+    } else {
+      alert("Invalid email or password");
+    }
   };
 
   return (
@@ -29,7 +29,7 @@ const Login = () => {
 
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email Address *</label>
+          <label htmlFor="email">Email Address </label>
           <input
             type="email"
             id="email"
@@ -40,7 +40,7 @@ const Login = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password *</label>
+          <label htmlFor="password">Password </label>
           <input
             type="password"
             id="password"
@@ -56,7 +56,9 @@ const Login = () => {
       </form>
 
       <div className="create-account">
-        <p>Create an Account</p>
+        <p>
+          Don't have an account? <Link to="/register">Register here</Link>
+        </p>
       </div>
     </div>
   );

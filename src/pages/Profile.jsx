@@ -1,12 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Add this import
+import { useAuthContext } from "../AuthContext"; // Add this import
 import ProfileNavbar from "../components/ProfileNavbar";
 import { UserOutlined, RightOutlined, LogoutOutlined } from "@ant-design/icons";
 import "./profile.css";
 
 const Profile = () => {
+  const { logout } = useAuthContext();
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
-    // Any additional logout logic you already have
+    navigate("/");
   };
 
   return (

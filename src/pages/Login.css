@@ -41,11 +41,13 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  background-color: white; /* Added white background */
 }
 
 .form-group input:focus {
   outline: none;
   border-color: #666;
+  background-color: white; /* Ensure stays white on focus */
 }
 
 .signin-button {
@@ -67,10 +69,14 @@
 .create-account p {
   margin-top: 1.5rem;
   color: #666;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
-.create-account p:hover {
+.create-account a {
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.create-account a:hover {
   color: #333;
 }
