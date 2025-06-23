@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Add this import
-import { useAuthContext } from "../AuthContext"; // Add this import
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../AuthContext";
 import ProfileNavbar from "../components/ProfileNavbar";
 import { UserOutlined, RightOutlined, LogoutOutlined } from "@ant-design/icons";
 import "./profile.css";
@@ -13,7 +13,7 @@ const Profile = () => {
     logout();
     navigate("/");
   };
-
+  const { currentUser } = useAuthContext();
   return (
     <div>
       <ProfileNavbar />
@@ -25,8 +25,10 @@ const Profile = () => {
               <UserOutlined />
             </div>
             <div className="profile-info">
-              <h2>BOLU AREGBESOLA</h2>
-              <button className="bvn-button">View my BVN</button>
+              {currentUser && <span>{currentUser.name}</span>}
+              <div>
+                <button className="bvn-button">View my BVN</button>
+              </div>
             </div>
           </div>
         </section>

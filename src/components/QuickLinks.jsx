@@ -39,10 +39,12 @@ const QuickLinks = () => {
             Invest
           </div>
         </Link>
-        <div className="card-item">
-          <GlobalOutlined />
-          Betting
-        </div>
+        <Link to="/deposit">
+          <div className="card-item">
+            <GlobalOutlined />
+            Deposit
+          </div>
+        </Link>
         <div className="card-item">
           <BulbOutlined />
           Shop
