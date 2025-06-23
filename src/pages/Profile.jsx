@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../AuthContext";
 import ProfileNavbar from "../components/ProfileNavbar";
 import { UserOutlined, RightOutlined, LogoutOutlined } from "@ant-design/icons";
-import "./profile.css";
+import "./Profile.css";
 
 const Profile = () => {
   const { logout } = useAuthContext();
