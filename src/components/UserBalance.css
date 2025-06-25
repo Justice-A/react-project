@@ -40,9 +40,9 @@
 
 @media (max-width: 768px) {
   .custom-card {
-    margin-top: 90px;
+    margin-top: 120px;
     padding: 20px;
-    width: 95%; /* Increased width for mobile */
+    width: 100%; /* Increased width for mobile */
     max-width: none; /* Remove max-width constraint */
   }
 
@@ -52,7 +52,7 @@
 
   .balance {
     margin-right: 0;
-    padding-right: 0;
+    padding-right: 60px;
     width: 100%;
     margin-bottom: 20px;
   }
