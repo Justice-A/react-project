@@ -54,6 +54,11 @@ const Transfer = () => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
+    if (!currentUser) {
+      setError("User not logged in. Please sign in again.");
+      setIsLoading(false);
+      return;
+    }
 
     try {
       // 1. Validate inputs

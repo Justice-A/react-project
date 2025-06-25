@@ -21,7 +21,7 @@ const History = () => {
 
         // 2. Fetch all transactions
         const response = await fetch(
-          "https://68559b621789e182b37bcfe2.mockapi.io/transactions"
+          "https://68559b621789e182b37bcfe1.mockapi.io/api/v1/transactions"
         );
         const data = await response.json();
         setTransactions(data);
