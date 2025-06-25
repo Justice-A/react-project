@@ -4,7 +4,7 @@ import Input from "../components/Input";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
-
+import "./Deposit.css";
 const Deposit = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();

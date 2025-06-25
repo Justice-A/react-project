@@ -19,26 +19,30 @@ const UserBalance = () => {
     <div>
       <Navbar />
       <div className="custom-card">
-        <div className="balance">
-          <p className="total-balance">
-            Total Balance
-            <EyeOutlined
-              onClick={() => setShowBalance(!showBalance)}
-              className="copy-icon"
-            />
-          </p>
-          <b>
-            {showBalance
-              ? `₦${(Number(currentUser?.balance) || 0).toFixed(2)}`
-              : "****"}
-          </b>
+        <div className="balance-account-container">
+          <div className="balance">
+            <p className="total-balance">
+              Total Balance
+              <EyeOutlined
+                onClick={() => setShowBalance(!showBalance)}
+                className="copy-icon"
+              />
+            </p>
+            <b>
+              {showBalance
+                ? `₦${(Number(currentUser?.balance) || 0).toFixed(2)}`
+                : "****"}
+            </b>
+          </div>
+          <div className="account-no">
+            <p>Account Number</p>
+            <p>
+              <CopyOutlined onClick={handleCopy} className="copy-icon" />
+              {currentUser?.accountNumber || "Loading..."}
+            </p>
+          </div>
         </div>
-        <div className="account-no">
-          <p>Account Number</p>
-          <p>
-            <CopyOutlined onClick={handleCopy} className="copy-icon" />
-            {currentUser?.accountNumber || "Loading..."}
-          </p>
+        <div className="transaction-history">
           <Link to="/history">
             <p>
               Transaction History <RightOutlined />

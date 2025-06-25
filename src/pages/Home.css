@@ -4,6 +4,25 @@
   padding: 2rem;
   text-align: center;
 }
+/* Home.css */
 .body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   padding-top: 70px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .body {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .body {
+    padding: 0 5px;
+  }
 }

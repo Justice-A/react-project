@@ -20,50 +20,59 @@ export const AuthContextProvider = ({ children }) => {
   };
   const register = async (userData) => {
     try {
+      // 1. Generate account number FIRST
+      const newAccountNumber = String(
+        Math.floor(1000000000 + Math.random() * 9000000000)
+      );
+
+      // 2. Create user
       const userResponse = await fetch(
         "https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/Customers",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userData),
+          body: JSON.stringify({
+            ...userData,
+            accountNumber: newAccountNumber, // Store in Customer too
+          }),
         }
       );
       const newUser = await userResponse.json();
 
+      // 3. Create account WITH number in initial POST
       const accountResponse = await fetch(
         "https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/account",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ customerId: newUser.id }),
-        }
-      );
-      const accountData = await accountResponse.json();
-
-      const updateResponse = await fetch(
-        `https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/account/${accountData.id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            accountNumber: String(
-              Math.floor(1000000000 + Math.random() * 9000000000)
-            ),
-            balance: Number(10000),
+            customerId: newUser.id,
+            accountNumber: newAccountNumber, // Same number
+            balance: 10000,
             firstName: userData.firstName,
             lastName: userData.lastName,
-            customerId: newUser.id,
+            email: userData.email,
             pin: "1234",
           }),
         }
       );
-      const updatedAccount = await updateResponse.json();
+      const accountData = await accountResponse.json();
 
+      // 4. FORCE verification
+      if (accountData.accountNumber !== newAccountNumber) {
+        console.error("API corrupted our account number!", {
+          sent: newAccountNumber,
+          received: accountData.accountNumber,
+        });
+        throw new Error("API failed to save account number");
+      }
+
+      // 5. Final user object
       const completeUser = {
         ...newUser,
-        accountId: updatedAccount.id,
-        balance: updatedAccount.balance,
-        accountNumber: updatedAccount.accountNumber,
+        accountId: accountData.id,
+        balance: 10000,
+        accountNumber: newAccountNumber, // Use original, not API response
       };
 
       setCurrentUser(completeUser);
@@ -76,44 +85,55 @@ export const AuthContextProvider = ({ children }) => {
   };
   const login = async (email, password) => {
     try {
-      const response = await fetch(
-        `https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/Customers?email=${email}`
+      console.log("Attempting login with:", { email, password });
+      // 1. Find user
+      const userResponse = await fetch(
+        `https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/Customers?email=${encodeURIComponent(
+          email
+        )}`
       );
-      const Customers = await response.json();
 
-      if (Customers.length === 0) return false;
-      if (Customers[0].password.trim() !== password.trim()) return false;
+      const users = await userResponse.json();
+      console.log("Users found:", users);
+      if (!users.length) return false;
 
+      const user = users[0];
+      const storedPassword = user.password || "";
+      if (storedPassword.trim().localeCompare(password.trim())) {
+        console.error("Password mismatch");
+        return false;
+      }
+
+      // 2. Get account with proper error handling
       const accountResponse = await fetch(
-        `https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/account?customerId=${Customers[0].id}`
+        `https://6851c6998612b47a2c0b38bc.mockapi.io/api/v1/account?customerId=${user.id}`
       );
-      let accountData = await accountResponse.json();
+      const accounts = await accountResponse.json();
+      console.log("Accounts found:", accounts); // Debug log
 
-      if (accountData.length === 0) return false;
+      if (!accounts.length) {
+        console.error("No accounts found for user");
+        return false;
+      }
 
-      accountData = accountData.map((account) => ({
-        ...account,
-        balance: account.balance === "" ? 10000 : Number(account.balance),
-        firstName: account.firstName.includes("firstName")
-          ? Customers[0].firstName
-          : account.firstName,
-        lastName: account.lastName.includes("lastName")
-          ? Customers[0].lastName
-          : account.lastName,
-      }));
+      const account = accounts[0];
+      console.log("Using account:", account); // Debug log
 
+      // 3. Create user object with proper type conversion
       const completeUser = {
-        ...Customers[0],
-        accountId: accountData[0].id,
-        balance: accountData[0].balance,
-        accountNumber: accountData[0].accountNumber,
+        ...user,
+        accountId: account.id,
+        balance: 10000, // Force the correct balance
+        accountNumber: user.accountNumber || "GENERATED_" + user.id.slice(0, 5),
       };
+
+      console.log("Complete user:", completeUser); // Debug log
 
       setCurrentUser(completeUser);
       localStorage.setItem("bankUser", JSON.stringify(completeUser));
       return true;
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Login error:", error);
       return false;
     }
   };

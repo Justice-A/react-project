@@ -1,8 +1,11 @@
 .icons {
   display: flex;
-  gap: 150px;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  padding: 15px 10px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .icon-circle {
@@ -16,9 +19,35 @@
   justify-content: center;
   font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .icon-circle:hover {
   background-color: rgb(120, 0, 80);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .icons {
+    gap: 20px;
+    padding: 15px 5px;
+  }
+
+  .icon-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icons {
+    gap: 10px;
+  }
+
+  .icon-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 }

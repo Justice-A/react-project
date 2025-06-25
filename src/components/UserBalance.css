@@ -1,48 +1,72 @@
 .custom-card {
   display: flex;
-  width: 1000px;
+  flex-wrap: wrap; /* Allows content to wrap */
+  width: 100%;
+  max-width: 1000px;
   background-color: rgb(89, 1, 64);
-  justify-content: space-between;
   color: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  margin: 40px auto; /* centers it horizontally */
+  margin: 40px auto;
   font-family: Arial, sans-serif;
+  position: relative; /* Needed for absolute positioning */
 }
-.total-balance {
+
+/* Balance and Account container */
+.balance-account-container {
   display: flex;
-  gap: 10px;
-}
-/* Default style */
-.copy-icon {
-  color: white;
-  transition: transform 0.2s ease, color 0.2s ease;
-  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
 }
 
-/* On hover: change color */
-.copy-icon:hover {
-  color: #777;
+.balance {
+  flex: 1;
+  padding-right: 40px;
 }
 
-/* On click: animate briefly */
-.copy-icon:active {
-  transform: scale(0.85);
-  color: gray;
-  animation: pulse 0.3s ease;
+/* Transaction History positioning */
+.transaction-history {
+  position: absolute;
+  right: 30px;
+  bottom: 0;
 }
 
-/* Optional: smoother pulse animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
+@media (min-width: 769px) {
+  .balance {
+    margin-right: 400px;
   }
-  50% {
-    transform: scale(1.2);
-    color: #aaa;
+}
+
+@media (max-width: 768px) {
+  .custom-card {
+    margin-top: 90px;
+    padding: 20px;
+    width: 95%; /* Increased width for mobile */
+    max-width: none; /* Remove max-width constraint */
   }
-  100% {
-    transform: scale(1);
+
+  .balance-account-container {
+    flex-direction: row;
+  }
+
+  .balance {
+    margin-right: 0;
+    padding-right: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .account-no {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .transaction-history {
+    position: static;
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
   }
 }

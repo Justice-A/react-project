@@ -1,18 +1,12 @@
-/* Transfer.css */
-.transfer-container {
+.deposit-container {
+  display: flex;
   max-width: 500px;
   margin: 0 auto;
   padding: 30px;
   margin-top: 100px;
   gap: 10px;
 }
-
-.error-message {
-  color: red;
-  margin-bottom: 15px;
-}
-
-.transfer-button {
+.deposit-button {
   width: 100%;
   padding: 12px;
   background-color: rgb(89, 1, 64);
@@ -20,8 +14,4 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-}
-
-.transfer-button:disabled {
-  background-color: #cccccc;
 }

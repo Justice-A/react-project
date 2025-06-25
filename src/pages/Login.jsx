@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../AuthContext";
+import { LoadingOutlined } from "@ant-design/icons";
 import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuthContext();
   const navigate = useNavigate();
 
@@ -50,8 +52,8 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit" className="signin-button">
-          SIGN IN
+        <button type="submit" className="signin-button" disabled={isLoading}>
+          {isLoading ? <LoadingOutlined /> : "Sign in"}
         </button>
       </form>
 

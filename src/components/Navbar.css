@@ -1,3 +1,4 @@
+/* Navbar.css */
 .navbar {
   position: fixed;
   top: 0;
@@ -7,29 +8,45 @@
   background-color: rgb(240, 240, 240);
   box-shadow: 2px 1px rgb(173, 173, 173);
   z-index: 1000;
+  padding: 0 16px; /* Add padding to avoid edge-touching */
 }
 
-.navbar .logo {
-  opacity: 1;
-}
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  height: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  width: auto;
 }
-.icon-circle {
-  background-color: rgb(89, 1, 64);
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+
+.logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  cursor: pointer;
+  gap: 10px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
+.bell {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 10px;
+    height: 60px;
+  }
+
+  .logo span {
+    font-size: 0.9rem;
+  }
+
+  .bell {
+    font-size: 1.2em !important;
+  }
 }

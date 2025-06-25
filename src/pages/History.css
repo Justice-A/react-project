@@ -1,7 +1,114 @@
+/* History.css */
+.history-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.history-title {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
 .transaction-card {
   background: white;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #3498db;
+  transition: transform 0.2s ease;
+}
+
+.transaction-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card p {
+  margin: 0.5rem 0;
+  color: #34495e;
+  font-size: 1rem;
+}
+
+.transaction-card strong {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+/* Status indicators */
+.status-completed {
+  color: #27ae60;
+  background: #e8f5e9;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.status-pending {
+  color: #f39c12;
+  background: #fff3e0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.status-failed {
+  color: #e74c3c;
+  background: #ffebee;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+/* Amount styling */
+.transaction-amount {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.credit {
+  color: #27ae60;
+}
+
+.debit {
+  color: #e74c3c;
+}
+
+/* Date styling */
+.transaction-date {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Empty state */
+.empty-history {
+  text-align: center;
+  padding: 3rem;
+  color: #95a5a6;
+  font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 0 0.5rem;
+  }
+
+  .transaction-card {
+    padding: 1rem;
+  }
+
+  .transaction-card p {
+    font-size: 0.9rem;
+  }
 }
