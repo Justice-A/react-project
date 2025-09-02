@@ -25,6 +25,7 @@ const Register = () => {
 
   return (
     <div className="login-container">
+      <h1>Welcome Vee Banking</h1>
       <h2>REGISTER</h2>
       <form onSubmit={handleSubmit} className="input-field">
         <div>
