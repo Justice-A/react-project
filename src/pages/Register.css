@@ -23,53 +23,6 @@
   --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
 }
 
-body {
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--primary-gradient);
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-      circle at 20% 80%,
-      rgba(120, 119, 198, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(120, 119, 198, 0.2) 0%,
-      transparent 50%
-    );
-  animation: float 20s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  33% {
-    transform: translate(-50%, -48%) rotate(120deg);
-  }
-  66% {
-    transform: translate(-48%, -50%) rotate(240deg);
-  }
-}
-
 .login-container {
   display: flex;
   flex-direction: column;
@@ -108,7 +61,6 @@ body::before {
   color: var(--text-primary);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  margin-bottom: 0.25rem;
   text-align: center;
   background: linear-gradient(
     135deg,
@@ -213,10 +165,10 @@ body::before {
 }
 
 .input-field input {
-  width: 100%;
+  width: 80%;
   padding: 1.25rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 20, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   font-size: 1rem;
   font-weight: 400;
@@ -228,27 +180,26 @@ body::before {
 }
 
 .input-field input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(78, 78, 78, 0.5);
   font-weight: 300;
   transition: all 0.3s ease;
 }
 
 .input-field input:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2),
-    0 8px 32px rgba(255, 255, 255, 0.1);
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1),
+    0 8px 32px rgba(102, 126, 234, 0.2);
   transform: translateY(-2px);
 }
 
 .input-field input:focus::placeholder {
   transform: translateY(-2px);
-  opacity: 0.8;
 }
 
 .input-field button {
-  width: 100%;
+  width: 50%;
   padding: 1.25rem;
   background: linear-gradient(
     135deg,
@@ -256,7 +207,7 @@ body::before {
     rgba(255, 255, 255, 0.7) 100%
   );
   color: #1a1a1a;
-  border: none;
+  border: #000000;
   border-radius: 16px;
   font-size: 1rem;
   font-weight: 600;
@@ -311,6 +262,7 @@ body::before {
 
 .create-account {
   margin-top: 2.5rem;
+  margin-bottom: 12rem;
   text-align: center;
   animation: fadeIn 1s ease-out 0.3s both;
 }

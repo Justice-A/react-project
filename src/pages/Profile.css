@@ -1,6 +1,7 @@
 .profile-container {
   max-width: 600px;
   margin: 0 auto;
+  margin-top: 3.7rem;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;

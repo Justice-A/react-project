@@ -25,7 +25,6 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-header">
-        <h1>Welcome to V1</h1>
         <h2>SIGN IN</h2>
       </div>
 
