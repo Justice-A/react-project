@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../AuthContext";
+
 import { LoadingOutlined } from "@ant-design/icons";
 import "./Login.css";
 const Login = () => {
@@ -25,6 +26,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-header">
+        <h1>Welcome back</h1>
         <h2>SIGN IN</h2>
       </div>
 
